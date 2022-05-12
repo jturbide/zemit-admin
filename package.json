@@ -1,0 +1,51 @@
+{
+  "name": "@zemit/workspace",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build:watch": "vue-cli-service build --watch",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.26.0",
+    "core-js": "^3.8.3",
+    "crypto-js": "^4.1.1",
+    "debounce": "^1.2.1",
+    "dotenv-webpack": "^7.1.0",
+    "reflect-metadata": "^0.1.13",
+    "store2": "^2.13.1",
+    "vue": "^2.6.14",
+    "vue-class-component": "^7.2.3",
+    "vue-i18n": "8",
+    "vue-property-decorator": "^9.1.2",
+    "vue-router": "^3.5.1",
+    "vuetify": "^2.6.3"
+  },
+  "devDependencies": {
+    "@mdi/font": "^6.5.95",
+    "@types/debounce": "^1.2.1",
+    "@types/events": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-typescript": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/eslint-config-standard": "^6.1.0",
+    "@vue/eslint-config-typescript": "^9.1.0",
+    "deepmerge": "^4.2.2",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "moment": "^2.29.1",
+    "sass": "~1.32",
+    "sass-loader": "^12.6.0",
+    "typescript": "~4.5.5",
+    "vue-template-compiler": "^2.6.14"
+  }
+}
