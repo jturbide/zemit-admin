@@ -47,15 +47,15 @@
               v-model="form.model.data.userlist"
               :loading="form.isLoading"
               :search-input.sync="userListSearch"
-              :items="items"
-              :label="$t('placeholder.userlist')"
+              :items="userList"
+              :label="$t('placeholder.userList')"
               hide-details="auto"
               deletable-chips
               multiple
               chips
               clearable
               item-text="data.firstName"
-              item-value="data.id"
+              return-object
             ></v-autocomplete>
           </v-col>
         </v-row>
@@ -79,7 +79,7 @@ import UserService from '@/zemit/services/user.service';
 export default class RoleForm extends Vue {
   name = 'RoleForm';
 
-  items = [];
+  userList = [];
   userListSearch = '';
 
   service = RoleService.getInstance();
@@ -100,7 +100,7 @@ export default class RoleForm extends Vue {
 
   @Watch('userListSearch')
   onUserListSearch(search: string) {
-    UserService.getInstance().getAll({search}).then(response => this.items = response.data.view.list);
+    UserService.getInstance().getAll({search}).then(response => this.userList = response.data.view.list);
   }
 }
 </script>

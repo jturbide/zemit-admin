@@ -1,3 +1,5 @@
+import Logger from "@/zemit/core/logger";
+
 export interface ModelConfig {
   castOnHydrate: boolean,
   lateStateBinding: boolean,
@@ -5,6 +7,8 @@ export interface ModelConfig {
   cache: boolean,
   events: boolean,
 }
+
+const d = new Logger('zemit/core/model');
 
 export default class Model {
 
@@ -173,6 +177,14 @@ export default class Model {
             ret[key][listKey] = this.data[key][listKey];
           }
         }
+
+        // if is an array of models, zemit require to know if you want to keep the unpassed relationships entites or not
+        if (this.data[key][0] instanceof Model) {
+          if (!this.keepRelationship()) {
+            ret[key].unshift(false);
+          }
+        }
+
       } else {
         if (this.data[key] instanceof Model) {
           ret[key] = this.data[key].toObject();
@@ -181,7 +193,15 @@ export default class Model {
         }
       }
     }
+    d.debug(ret);
     return ret;
+  }
+
+  /**
+   * @TODO handle as an associative array to support mutliple nested levels with different keepRelationship value
+   */
+  keepRelationship() {
+    return false;
   }
 
   toJson() {

@@ -35,7 +35,7 @@
               v-model="form.model.data.description"
               :error-messages="form.errors.description"
               :label="$t('placeholder.description')"
-              :rules="[form.rules.required]"
+              :rules="[]"
               hide-details="auto"
               clearable
               @input="form.errors = {}"
@@ -43,19 +43,22 @@
           </v-col>
           <v-col cols="12">
             <v-autocomplete
-              v-model="form.model.data.langList"
-              :loading="form.isLoading"
+              v-model="form.model.data.langlist"
               :search-input.sync="langListSearch"
               :items="langList"
+              item-text="data.label"
+              return-object
+              :error-messages="form.errors.langlist"
               :label="$t('placeholder.langList')"
+              prepend-inner-icon="mdi-account-lock"
               hide-details="auto"
-              deletable-chips
-              multiple
               chips
               clearable
-              item-text="data.label"
-              item-value="data.id"
-            ></v-autocomplete>
+              deletable-chips
+              multiple
+              @input="form.errors = {}"
+            >
+            </v-autocomplete>
           </v-col>
         </v-row>
       </template>
@@ -86,6 +89,7 @@ export default class SiteForm extends Vue {
   };
 
   form = {
+    formView: this.$refs.formView,
     name: 'Site Form',
     model: new SiteModel(),
     service: SiteService.getInstance(),

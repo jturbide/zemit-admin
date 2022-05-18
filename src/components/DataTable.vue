@@ -244,28 +244,24 @@ export default class DataTable extends Vue {
 
   deleteRecord (item: Model) {
     item.Loading = true;
-    // this.service?.delete({ id: item.data.id }).then((response: any) => {
-    //     if (response.data.response && response.data.view.deleted && response.data.view.single) {
-    //       console.log('restore', response.data.view.single, item);
-    //       // item = response.data.view.single;
-    //       // item.assign(response.data.view.single);
-    //     }
-    //   })
-    //   .catch((reason) => Vue.$handleError(this, reason))
-    //   .finally(() => item.Loading = false);
+    this.service.delete({ id: item.data.id })
+      .then((response: any) => {
+          d.d('delete', response, item);
+          item.assign(response.data.view.single);
+      })
+      .catch((reason) => this.$root.$zemit.handleError(reason))
+      .finally(() => item.Loading = false);
   }
 
   restoreRecord (item: Model) {
     item.Loading = true;
-    // this.service?.restore({ id: item.data.id }).then((response: any) => {
-    //   if (response.data.response && response.data.view.restored && response.data.view.single) {
-    //     console.log('restore', response.data.view.single, item);
-    //     // item = response.data.view.single;
-    //     // item.assign(response.data.view.single);
-    //   }
-    //   })
-    //   .catch((reason) => Vue.$handleError(this, reason))
-    //   .finally(() => item.Loading = false);
+    this.service.restore({ id: item.data.id })
+      .then((response: any) => {
+          d.d('restore', response, item);
+          item.assign(response.data.view.single);
+      })
+      .catch((reason) => this.$root.$zemit.handleError(reason))
+      .finally(() => item.Loading = false);
   }
 
   prepareData (options: any, search: string | null) {

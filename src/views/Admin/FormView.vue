@@ -59,7 +59,7 @@
       <v-btn
         :disabled="form.isLoading"
         :loading="form.isLoading"
-        @click="$refs.form.reset()"
+        @click="$refs.formRef.reset()"
         text
         depressed
       >
