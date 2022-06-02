@@ -5,6 +5,7 @@ import router from './router';
 import i18n from '@/plugins/i18n';
 import vuetify from '@/plugins/vuetify';
 import zemit from '@/plugins/zemit';
+import ckeditor from '@/plugins/ckeditor';
 import Identity from '@/zemit/core/identity';
 import Filters from '@/zemit/core/filters';
 import 'reflect-metadata';
@@ -22,6 +23,7 @@ export default class Main {
     router,
     vuetify,
     zemit,
+    ckeditor,
     render: (h: any) => h(Auth),
   };
 
